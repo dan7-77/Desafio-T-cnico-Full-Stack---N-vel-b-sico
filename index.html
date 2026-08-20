@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Chamados - Helpdesk</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="cabecalho">
+        <div>
+          <h1 class="cabecalho-titulo">Gestão de Chamados</h1>
+          <p class="cabecalho-subtitulo">
+            Acompanhe e gerencie as solicitações da equipe
+          </p>
+        </div>
+        <button onclick="abrirModal()" class="btn btn-principal">
+          + Novo Chamado
+        </button>
+      </header>
+
+      <section class="painel-filtros">
+        <input
+          type="text"
+          id="filtroBusca"
+          oninput="renderizarTabela()"
+          placeholder="Buscar por título ou descrição..."
+          class="campo-texto filtro-busca"
+        />
+
+        <select
+          id="filtroStatus"
+          onchange="renderizarTabela()"
+          class="campo-select"
+        >
+          <option value="">Todos os Status</option>
+          <option value="Aberto">Aberto</option>
+          <option value="Em Andamento">Em Andamento</option>
+          <option value="Resolvido">Resolvido</option>
+          <option value="Fechado">Fechado</option>
+        </select>
+
+        <select
+          id="filtroPrioridade"
+          onchange="renderizarTabela()"
+          class="campo-select"
+        >
+          <option value="">Todas as Prioridades</option>
+          <option value="Baixa">Baixa</option>
+          <option value="Média">Média</option>
+          <option value="Alta">Alta</option>
+        </select>
+      </section>
+
+      <main class="container-tabela">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Título / Descrição</th>
+              <th>Prioridade</th>
+              <th>Status</th>
+              <th>Responsável</th>
+              <th>Abertura</th>
+              <th style="text-align: right">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaCorpo"></tbody>
+        </table>
+      </main>
+    </div>
+
+    <div id="modalChamado" class="modal-fundo oculto">
+      <div class="modal-conteudo">
+        <div class="modal-cabecalho">
+          <h2 id="modalTitulo">Criar Novo Chamado</h2>
+          <button onclick="fecharModal()" class="botao-fechar">&times;</button>
+        </div>
+
+        <form id="formChamado" onsubmit="salvarChamado(event)">
+          <input type="hidden" id="chamadoId" />
+
+          <div class="formulario-grupo">
+            <label class="formulario-rotulo">Título</label>
+            <input
+              type="text"
+              id="inputTitulo"
+              required
+              class="campo-texto"
+              style="width: 100%"
+            />
+          </div>
+
+          <div class="formulario-grupo">
+            <label class="formulario-rotulo">Descrição</label>
+            <textarea
+              id="inputDescricao"
+              rows="3"
+              required
+              class="campo-textarea"
+              style="width: 100%"
+            ></textarea>
+          </div>
+
+          <div class="formulario-linha formulario-grupo">
+            <div>
+              <label class="formulario-rotulo">Prioridade</label>
+              <select
+                id="inputPrioridade"
+                class="campo-select"
+                style="width: 100%"
+              >
+                <option value="Baixa">Baixa</option>
+                <option value="Média" selected>Média</option>
+                <option value="Alta">Alta</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="formulario-rotulo">Status</label>
+              <select id="inputStatus" class="campo-select" style="width: 100%">
+                <option value="Aberto">Aberto</option>
+                <option value="Em Andamento">Em Andamento</option>
+                <option value="Resolvido">Resolvido</option>
+                <option value="Fechado">Fechado</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="formulario-grupo">
+            <label class="formulario-rotulo">Responsável</label>
+            <select
+              id="inputResponsavel"
+              class="campo-select"
+              style="width: 100%"
+            ></select>
+          </div>
+
+          <div class="modal-rodape">
+            <button
+              type="button"
+              onclick="fecharModal()"
+              class="btn btn-secundario"
+            >
+              Cancelar
+            </button>
+            <button type="submit" class="btn btn-principal">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
