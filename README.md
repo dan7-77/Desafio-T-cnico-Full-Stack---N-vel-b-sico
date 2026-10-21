@@ -7,12 +7,8 @@
 - Vscode
 - JavaScript
 - Foi utilizada uma i.a (Deepseek) para desenvolver as funções JavaScript
-## ⚙️ Funcionalidades
 
-- [Funcionalidade 1]
-- [Funcionalidade 2]
-- [Funcionalidade 3]
-
+  
 ## 💻 Como executar o projeto
 
 1. Clone este repositório:
