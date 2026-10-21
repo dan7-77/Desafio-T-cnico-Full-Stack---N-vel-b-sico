@@ -11,12 +11,7 @@
   
 ## Como executar o projeto
 
-1. Clone este repositório:
-
-   ```bash
-   git clone https://github.com/SEU-USUARIO/NOME-DO-REPOSITORIO.git
-   ```
-
+1. Clone este repositório ou faça o download do arquivo.zip do projeto
 2. Abra o aplicativo Visual Code.
 3. Abra a pasta do projeto e clique no arquivo do html
 
